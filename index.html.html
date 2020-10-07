@@ -1,0 +1,80 @@
+<!DOCTUPE HTML>
+  <html>
+  <link rel="stylesheet" href="style.css">
+    <head>
+      <title>
+        Primes
+      </title>
+      <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+<link type="text/css" rel="stylesheet" id="dark-mode-custom-link">
+<style type="text/css" id="dark-mode-custom-style"></style>
+
+    </head>
+
+    <body>
+
+      <div id="all_elements">
+        <a href="#">  <i id ="Font" class="fas fa-chevron-up"></i></a>
+        <div id="input1_div">
+          <p id="button1_info"> Enter a value from 1 to 100000 </p>
+          <input type="number" id="input1" value=1000>
+        </div>
+        <div id="button1_2_div">
+          <button class="button button1" onclick="input1()"> GET PRIMES</button>
+          <button class="button button2" onclick="clear_output1()"> CLEAR</button>
+        </div>
+        <div id="output1_div">
+          <p id="output1"></p>
+        </div>
+
+
+      </div>
+
+
+      <script>
+        function input1() {
+          console.log("Button 1 pressed");
+
+          var n = document.getElementById("input1").value;
+          var text = " "
+          if (n > 100000) {
+          text = "Enter from 0 to 100000" ;
+           document.getElementById("output1").innerHTML = text;
+           return ;
+          }
+          text = "THE PRIME NUMBERS UPTO THE INPUT ARE: </br> </br>"
+          var prime = [];
+          var isPrime = [];
+          for (var i = 0; i <= n; i++) {
+            isPrime.push(true);
+          }
+          isPrime[0] = false;
+          isPrime[1] = false;
+
+          for (var i = 2; i <= n; i++) {
+            if (isPrime[i] == true) {
+              prime.push(i);
+              for (var j = i * i; j <= n; j += i) {
+                isPrime[j] = false;
+              }
+            }
+          }
+          var i = 0;
+          for (var key in prime) {
+            text += prime[i] + " ";
+            i++;
+          }
+          document.getElementById("output1").innerHTML = text;
+
+        }
+        function clear_output1()
+        {
+         document.getElementById("output1").innerHTML = "";
+        }
+
+      </script>
+    </body>
+
+  </html>
